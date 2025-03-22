@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow Hide</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+        .arrow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80px; /* Adjust size */
+            height: auto;
+        }
+        .draggable {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: blue;
+            cursor: grab;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://raw.githubusercontent.com/gfl97/playaround/main/gflplayaround.png" class="arrow" id="arrow">
+        <div class="draggable" style="top: 100px; left: 100px;"></div>
+        <div class="draggable" style="top: 200px; left: 200px;"></div>
+        <div class="draggable" style="top: 300px; left: 300px;"></div>
+    </div>
+
+    <script>
+        let arrow = document.getElementById("arrow");
+        let draggables = document.querySelectorAll(".draggable");
+        let arrowHidden = false;
+
+        draggables.forEach(draggable => {
+            draggable.addEventListener("mousedown", function () {
+                if (!arrowHidden) {
+                    arrow.style.opacity = "0";
+                    arrowHidden = true;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
